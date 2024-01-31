@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Validação</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Formulário de Validação</h2>
+
+    <form id="meuFormulario">
+        <label for="campoA">Campo A:</label>
+        <input type="number" id="campoA" name="campoA" required>
+        <br>
+
+        <label for="campoB">Campo B:</label>
+        <input type="number" id="campoB" name="campoB" required>
+        <br>
+
+        <button type="button" onclick="validarFormulario()">Submeter</button>
+    </form>
+
+    <div id="mensagem"></div>
+
+    <script>
+        function validarFormulario() {
+            // Obter os valores dos campos
+            var valorA = document.getElementById("campoA").value;
+            var valorB = document.getElementById("campoB").value;
+
+            // Converter os valores para números
+            valorA = parseFloat(valorA);
+            valorB = parseFloat(valorB);
+
+            // Validar se B é maior que A
+            if (valorB > valorA) {
+                exibirMensagemPositiva();
+            } else {
+                exibirMensagemNegativa();
+            }
+        }
+
+        function exibirMensagemPositiva() {
+            var mensagemDiv = document.getElementById("mensagem");
+            mensagemDiv.innerHTML = "Formulário válido! B é maior que A.";
+            mensagemDiv.style.color = "green";
+        }
+
+        function exibirMensagemNegativa() {
+            var mensagemDiv = document.getElementById("mensagem");
+            mensagemDiv.innerHTML = "Formulário inválido! B deve ser maior que A.";
+            mensagemDiv.style.color = "red";
+        }
+    </script>
+
+</body>
+</html>
